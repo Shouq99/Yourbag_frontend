@@ -62,10 +62,10 @@ import { Link } from "react-router-dom";
                   <article className="product-body">
             
 
-                <button onClick={handlePreviousPage} disabled={page === 1}>
+                <button className="product-btn" onClick={handlePreviousPage} disabled={page === 1}>
                   Previous
                 </button>
-                <button onClick={handleNextPage} disabled={page === totalPages}>
+                <button className="product-btn" onClick={handleNextPage} disabled={page === totalPages}>
                   Next
                 </button> 
               </article>
