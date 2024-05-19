@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import SingleProduct from "./SingleProduct";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/tookit/store";
 import { fetchProducts } from "@/tookit/slices/productSlice";
+import { Link } from "react-router-dom";
 
 
  const Products = () => {
@@ -12,13 +12,13 @@ import { fetchProducts } from "@/tookit/slices/productSlice";
     const dispatch: AppDispatch = useDispatch()
     
     const [page, setPage] = useState(1);
-    const [limit, setlimit] = useState(3);
+    const [limit, setlimit] = useState(5);
     useEffect(() => { 
       const fetchDate = async () =>{
         await dispatch(fetchProducts({page, limit}))
       }
       fetchDate()
-  }, [page])
+  }, [page, limit])
 
   const handlePreviousPage = () => {
     setPage((currentPage: number) => currentPage - 1)
@@ -29,22 +29,49 @@ import { fetchProducts } from "@/tookit/slices/productSlice";
   }
 
   //console.log(products)
-  return  (
-      <div>
+  return (
+    <section>
       <h2>Product</h2>
-        { isLoading && <p>Loading ...</p>}
-        {error && <p>Error{error}</p>}
+      <div className="grid flex-center">
+        {products?.length &&
+          products.map((product) => (
+            <div className="product-card" key={product.productId}>
+              <img src={product.image} alt="product.name" className="product-img" />
+              <h3 className="Product_Name">{product.name}</h3>
+                <p>
+                  {" "}
+                  Price:
+                  {product.price}
+                  {/*.toLocaleString("ar-SA",{
+                style: "currency",
+                currency: "ksa"
+              } */}
+                </p>
 
-        {products &&
-         products.length > 0 &&
-         products.map((product) => <SingleProduct key={product.productId}
-        product={product}/>)}
-        <section/>
-       <button onClick={handlePreviousPage} disabled={page === 1}>Previous</button>
-       <button onClick={handleNextPage} disabled={page === totalPages}>Next</button>
-</div>
-        
-            )
+              <Link to={`/products/${product.slug}`}>
+                  <button className="product-btn">
+                    Show Details <li className="fa fa-eye"></li>
+                  </button>
+                </Link>
+            </div>
+            
+          ))}
+                  <article className="product-body">
+            
+              
+                {/* <button className="product-btn">
+                  Add to cart <li className="fa fa-shopping"></li>
+                </button>
+                <button onClick={handlePreviousPage} disabled={page === 1}>
+                  Previous
+                </button>
+                <button onClick={handleNextPage} disabled={page === totalPages}>
+                  Next
+                </button> */}
+              </article>
+      </div>
+    </section>
+  )
 }
  
 export default Products

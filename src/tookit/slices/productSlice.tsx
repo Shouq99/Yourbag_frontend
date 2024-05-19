@@ -14,11 +14,11 @@ const initialState: ProductState = {
 
 export const fetchProducts = createAsyncThunk("products/fetchProducts", async ({page, limit}:{page: number, limit: number}) => {
     const response = await api.get(`/products?page=${page}&limit=${limit}`)
-   return (response.data)
+   return response.data
 })
 export const fetchProductsBySlug = createAsyncThunk("products/fetchProductsBySlug", async (slug : string | undefined) => {
     const response = await api.get(`/products/${slug}`)
-   return (response.data)
+   return response.data
 })
 
 const productSlice = createSlice({
