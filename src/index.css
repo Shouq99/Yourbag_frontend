@@ -55,7 +55,7 @@ align-items: center;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   width: 100%;
-  height: 70%;
+  height: 90%;
   margin: 2rem;
   align-items: center;
   background-color: rgb(242, 248, 253);
@@ -105,4 +105,10 @@ align-items: center;
  button:hover{
    background: #3A6073;
  } 
+
+ .product-img{
+  padding-top: 10px;
+  width: 250px;
+  height: 150px;
+ }
  

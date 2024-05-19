@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
     const dispatch: AppDispatch = useDispatch()
     
     const [page, setPage] = useState(1);
-    const [limit, setlimit] = useState(5);
+    const [limit, setlimit] = useState(3);
     useEffect(() => { 
       const fetchDate = async () =>{
         await dispatch(fetchProducts({page, limit}))
@@ -52,22 +52,22 @@ import { Link } from "react-router-dom";
                   <button className="product-btn">
                     Show Details <li className="fa fa-eye"></li>
                   </button>
+                  <button className="product-btn">
+                  Add to cart <li className="fa fa-shopping"></li>
+                </button>
                 </Link>
             </div>
             
           ))}
                   <article className="product-body">
             
-              
-                {/* <button className="product-btn">
-                  Add to cart <li className="fa fa-shopping"></li>
-                </button>
+
                 <button onClick={handlePreviousPage} disabled={page === 1}>
                   Previous
                 </button>
                 <button onClick={handleNextPage} disabled={page === totalPages}>
                   Next
-                </button> */}
+                </button> 
               </article>
       </div>
     </section>
