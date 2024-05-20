@@ -10,7 +10,7 @@ export type Category = {
 export type Product = {
 
   productId: string;
-  name: string;
+  name: string
   slug: string
   image: string
   description: string
@@ -28,4 +28,37 @@ export type Product = {
     totalPages: number,
     error: null | string,
     isLoading: boolean
+}
+
+export type FilterType = {
+  currentPage: number
+  itemsPerPage: number
+  keyword: string | undefined
+  orderBy: number
+  sortBy: number
+  minPrice: number
+  maxPrice: number
+}
+
+
+
+export type UserState ={
+  error: null | string
+  isLoading: boolean
+
+}
+
+export type LoginFormData = {
+  email:  string
+  password: string
+}
+
+export type User = {
+  fullName: string
+  phone:  string
+  email:  string
+  password: string
+  createdAt?:  string
+  
+
 }

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "@/tookit/store";
 import { fetchProducts } from "@/tookit/slices/productSlice";
 import { Link } from "react-router-dom";
+import Index from "@/routes";
 
 
  const Products = () => {
@@ -13,12 +14,15 @@ import { Link } from "react-router-dom";
     
     const [page, setPage] = useState(1);
     const [limit, setlimit] = useState(3);
+    const [keyword, setkeyword] = useState("")
+    const [sortBy, setsortBy] = useState("name")
+    
     useEffect(() => { 
       const fetchDate = async () =>{
-        await dispatch(fetchProducts({page, limit}))
+        await dispatch(fetchProducts({page, limit, keyword, sortBy}))
       }
       fetchDate()
-  }, [page, limit])
+  }, [page, limit, keyword, sortBy])
 
   const handlePreviousPage = () => {
     setPage((currentPage: number) => currentPage - 1)
@@ -26,12 +30,30 @@ import { Link } from "react-router-dom";
   } 
    const handleNextPage = () => {
     setPage((currentPage: number) => currentPage + 1)
+  } 
+   const handleKeyword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setkeyword(e.target.value)
   }
+    const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setsortBy(e.target.value)
+  }
+
 
   //console.log(products)
   return (
     <section>
       <h2>Product</h2>
+      <div>
+      <input type="text" id="search" name="search" value={keyword}className="input"
+              onChange={handleKeyword}
+              placeholder="search...."
+            />
+            <p>Sort By :</p>
+            <select name="" id="" onChange={handleSortChange}>
+            <option value="name">Name</option>
+            <option value="Price">Price</option>
+              </select>
+      </div>
       <div className="grid flex-center">
         {products?.length &&
           products.map((product) => (
@@ -44,14 +66,17 @@ import { Link } from "react-router-dom";
                   {product.price}
                   {/*.toLocaleString("ar-SA",{
                 style: "currency",
-                currency: "ksa"
+                currency: "ksa" 
               } */}
                 </p>
 
               <Link to={`/products/${product.slug}`}>
-                  <button className="product-btn">
+                 <button className="product-btn">
                     Show Details <li className="fa fa-eye"></li>
-                  </button>
+                </button>
+                
+            
+
                   <button className="product-btn">
                   Add to cart <li className="fa fa-shopping"></li>
                 </button>
@@ -65,6 +90,12 @@ import { Link } from "react-router-dom";
                 <button className="product-btn" onClick={handlePreviousPage} disabled={page === 1}>
                   Previous
                 </button>
+                {/* {Array.from({ length: totalPages}, (_, index) =>(
+                  <button className="product-btn" key={index} onClick={() => setPage(index + 1)}>
+                    {index + 1}
+
+                  </button>
+                ))} */}
                 <button className="product-btn" onClick={handleNextPage} disabled={page === totalPages}>
                   Next
                 </button> 

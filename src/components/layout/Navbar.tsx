@@ -8,6 +8,13 @@ import {Link} from "react-router-dom"
         <ul className="nav-lists flex-center">
             <li>
                 <Link className="nav_link" to= "/">Home</Link>
+            </li> 
+
+            <li>
+                <Link className="nav_link" to= "/signUp">SignUp</Link>
+            </li>
+             <li>
+                <Link className="nav_link" to= "/signIn">SignIn</Link>
             </li>
 
             <li>
