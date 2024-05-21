@@ -48,11 +48,10 @@ export type UserState ={
   isLoading: boolean
   error: string | null
   isLoggedIn: boolean
-  userData: null
+  userData?: null 
   token: null
-
-
 }
+
 
 export type LoginFormData= {
   email:  string
