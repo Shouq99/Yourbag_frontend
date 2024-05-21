@@ -48,6 +48,9 @@ export type UserState ={
   isLoading: boolean
   error: string | null
   isLoggedIn: boolean
+  userData: null
+  token: null
+
 
 }
 
@@ -62,7 +65,7 @@ export type User = {
   phone: number
   email: string
   password: string
-  createdAt: Date
+  createdAt?: Date
   role: number
   isBanned: boolean
 }
@@ -72,6 +75,7 @@ export type User = {
     phone: number
     email: string
     password: string
+    
   }
   
   export type FormLogin = {

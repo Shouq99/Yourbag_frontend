@@ -7,11 +7,14 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 type FormData = {
   fullName: string
-  phone: string
+  phone: number
   email: string
   password: string
-  createdAt: string
+  createdAt: Date
+  role: number
+  isBanned: boolean
 }
+
     export const Register = () => {
       const navigate = useNavigate()
         const dispatch: AppDispatch = useDispatch()

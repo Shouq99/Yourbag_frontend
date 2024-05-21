@@ -1,22 +1,25 @@
 import api from "@/api"
 import { LoginFormData, User, UserState } from "@/types"
-import { ReducerType, createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import {  createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
+const data =
+localStorage.getItem("loginData") != null
+
+   ? JSON.parse(String(localStorage.getItem("loginData")))
+   :[]
+        
 
 const initialState: UserState = {
     users: [],
     user: null,
+    userData:data.userData,
     isLoading: false,
-    isLoggedIn: false,
+    token: data.token,
+    isLoggedIn: data.isLoggedIn,
     error: null
 }
 
-// const savedState = localStorage.getItem("loginUserData")
-// if (savedState) {
-//   const parsedState = JSON.parse(savedState)
-//   initialState.user = parsedState.user
-//   initialState.isLoggedIn = parsedState.isLoggedIn
-// }
+
 
 export const registerUser = createAsyncThunk("users/registerUser", async (newUser: User) => {
     const response = await api.post("/users/signUp", newUser)
@@ -26,15 +29,56 @@ export const registerUser = createAsyncThunk("users/registerUser", async (newUse
 })
 export const LoginUser = createAsyncThunk("users/registerUser", async (userData: LoginFormData) => {
     const response = await api.post("/users/signIn", userData)
-   return response.data
+    const token = response.data.data.token
+    localStorage.setItem("token", token)
+    return response.data
 })
 
 
 const userSlice = createSlice({
-    name: "products",
+    name: "users",
     initialState: initialState,
-    reducers: {}
+    reducers: {
+
+  logoutUser: (state)=>{
+    state.isLoggedIn = false
+    state.userData = null
+    state.token = null
+    localStorage.setItem(
+        "loginData",
+        JSON.stringify({
+          user: state.user,
+          isLoggedIn: state.isLoggedIn
+        })
+    )
+}
+  },
+
+        extraReducers(builder) {
+            builder.addCase(LoginUser.fulfilled, (state, action) => {
+                state.isLoggedIn = true
+            state.userData = action.payload.data.user
+            localStorage.setItem(
+              "loginUserData",
+              JSON.stringify({
+                user: state.user,
+                isLoggedIn: state.isLoggedIn
+              })
+            )
+          })
+          .addMatcher(
+            (action) => action.type.endsWith("/rejected"),
+            (state) => {
+              state.error = "An error occurd"
+              state.isLoading = false
+            }
+          )   
+    }
+
+    
 })
 
 
+
+export const {logoutUser} = userSlice.actions 
 export default userSlice.reducer

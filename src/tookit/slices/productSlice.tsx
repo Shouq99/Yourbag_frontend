@@ -1,5 +1,5 @@
 import api from "@/api"
-import {ProductState, FilterType} from "@/types"
+import {ProductState} from "@/types"
 
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit"
 

@@ -19,19 +19,16 @@ export const ProductDetails = () => {
       fetchDate()
   }, [])
       return (
-        <article className="product-details">
+        <div className="product-details">
 
             <h2> Product Details page </h2>
 
         { isLoading && <p>Loading ...</p>}
         {error && <p>Error{error}</p>}
-        <div className="product">
 
         {product && (
-            <div className="product-details flex-center">
-                     <img src={product.image} alt={product.name} className="product-details-img"/>
- 
- 
+            <div className="product-details">
+                     <img src={product.image} alt={product.name} className="product-img"/>
                      <div className="product-body">
                      <p className="Product_Name">{product.name}</p>
                      <p className="Product_description">{product.description}  </p>
@@ -49,7 +46,6 @@ export const ProductDetails = () => {
                      </div>
         )}
         </div>
-        </article>
     )
 }
 
