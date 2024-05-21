@@ -4,11 +4,13 @@ import { AppDispatch, RootState } from "@/tookit/store";
 import { fetchProducts } from "@/tookit/slices/productSlice";
 import { Link } from "react-router-dom";
 import Index from "@/routes";
+import { styleText } from "util";
 
 
  const Products = () => {
 
-  const { products, isLoading, error, totalPages} = useSelector((state: RootState) => state.productR)
+  const { products, isLoading, error, totalPages} = useSelector(
+    (state: RootState) => state.productR)
 
     const dispatch: AppDispatch = useDispatch()
     
@@ -58,27 +60,27 @@ import Index from "@/routes";
         {products?.length &&
           products.map((product) => (
             <div className="product-card" key={product.productId}>
-              <img src={product.image} alt="product.name" className="product-img" />
+                     <img src={product.image} alt={product.name} className="product-img" />
               <h3 className="Product_Name">{product.name}</h3>
+              <p className="Product_Name">{product.description}</p>
                 <p>
                   {" "}
                   Price:
-                  {product.price}
-                  {/*.toLocaleString("ar-SA",{
+                  {product.price.toLocaleString("en-us",{
                 style: "currency",
-                currency: "ksa" 
-              } */}
+                currency: "USD" 
+                    } )}
                 </p>
 
               <Link to={`/products/${product.slug}`}>
                  <button className="product-btn">
-                    Show Details <li className="fa fa-eye"></li>
+                    Show Details 
                 </button>
                 
             
 
                   <button className="product-btn">
-                  Add to cart <li className="fa fa-shopping"></li>
+                  Add to cart 
                 </button>
                 </Link>
             </div>

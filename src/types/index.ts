@@ -2,7 +2,7 @@ export type Category = {
 
   categoryId: string
   name: string
-  slug: number
+  slug: string
   description: string
   products: Product[]
   
@@ -24,7 +24,7 @@ export type Product = {
 
   export type ProductState = {
     products:Product[],
-    product: Product | null,
+    product :Product | null,
     totalPages: number,
     error: null | string,
     isLoading: boolean
@@ -43,22 +43,39 @@ export type FilterType = {
 
 
 export type UserState ={
-  error: null | string
+  users: User[]
+  user: User | null
   isLoading: boolean
+  error: string | null
+  isLoggedIn: boolean
 
 }
 
-export type LoginFormData = {
+export type LoginFormData= {
   email:  string
   password: string
 }
 
 export type User = {
+  userId?: string
   fullName: string
-  phone:  string
-  email:  string
+  phone: number
+  email: string
   password: string
-  createdAt?:  string
-  
-
+  createdAt: Date
+  role: number
+  isBanned: boolean
 }
+  
+  export type FormRegister = {
+    fullName: string
+    phone: number
+    email: string
+    password: string
+  }
+  
+  export type FormLogin = {
+    email: string
+    password: string
+  }
+

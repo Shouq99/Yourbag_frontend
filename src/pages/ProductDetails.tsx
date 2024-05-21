@@ -22,17 +22,28 @@ export const ProductDetails = () => {
         <article className="product-details">
 
             <h2> Product Details page </h2>
+
         { isLoading && <p>Loading ...</p>}
         {error && <p>Error{error}</p>}
         <div className="product">
 
         {product && (
-            <div>
-                     <img src={product.image} alt={product.name} className="product-img"/>
+            <div className="product-details flex-center">
+                     <img src={product.image} alt={product.name} className="product-details-img"/>
+ 
+ 
                      <div className="product-body">
                      <p className="Product_Name">{product.name}</p>
-                     <p className="Product_description">{product.description}</p>
-                     <p className="Product_price">{product.price}</p>
+                     <p className="Product_description">{product.description}  </p>
+                     <p>
+                     {" "}
+                  Price:
+                  {product.price.toLocaleString("en-us",{
+                style: "currency",
+                currency: "USD" 
+                    } )}
+                     </p>
+              
                       <p>Product Added: {new Date (product.createdAt).toLocaleDateString()}</p>
                      </div>
                      </div>

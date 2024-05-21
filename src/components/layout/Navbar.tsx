@@ -1,7 +1,13 @@
+import { AppDispatch } from "@/tookit/store";
 import React from "react";
+import { useDispatch } from "react-redux";
 import {Link} from "react-router-dom"
 
  const Navbar = () => {
+    // const dispatch: AppDispatch = useDispatch()
+    // const handleLogout = () =>{
+    //     dispatch()
+    // }
     return (
 
         <nav className="flex-center">
@@ -15,6 +21,9 @@ import {Link} from "react-router-dom"
             </li>
              <li>
                 <Link className="nav_link" to= "/signIn">SignIn</Link>
+            </li> 
+             <li>
+                <Link className="nav_link" to= "/">Logout</Link>
             </li>
 
             <li>
