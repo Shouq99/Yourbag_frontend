@@ -1,5 +1,5 @@
 import api from "@/api"
-import { LoginFormData, User, UserState } from "@/types"
+import { LoginFormData,Product, ProductState, User, UserState } from "@/types"
 import {  createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 const data =
@@ -10,27 +10,33 @@ localStorage.getItem("loginData") != null
         
 
 const initialState: UserState = {
-    users: [],
-    user: null,
-    userData:data.userData,
-    isLoading: false,
-    token: data.token,
-    isLoggedIn: data.isLoggedIn,
-    error: null
+  users: [],
+  error: null,
+  isLoading: false,
+  userData: data.userData,
+  token: data.token,
+  isLoggedIn: data.isLoggedIn
+  //   users: [],
+  //  // user: null,
+  //   userData:data.userData,
+  //   isLoading: false,
+  //   token: data.token,
+  //   isLoggedIn: data.isLoggedIn,
+  //   error: null
 }
 
 
 
 export const registerUser = createAsyncThunk("users/registerUser", async (newUser: User) => {
     const response = await api.post("/users/signUp", newUser)
-    const token = response.data.data.token
-    localStorage.setItem("token", token)
+    // const token = response.data.data.token
+    // localStorage.setItem("token", token)
    return response.data
 })
 export const LoginUser = createAsyncThunk("users/registerUser", async (userData: LoginFormData) => {
     const response = await api.post("/users/signIn", userData)
-    const token = response.data.data.token
-    localStorage.setItem("token", token)
+    // const token = response.data.data.token
+    // localStorage.setItem("token", token)
     return response.data
 })
 
@@ -47,8 +53,9 @@ const userSlice = createSlice({
     localStorage.setItem(
         "loginData",
         JSON.stringify({
-          user: state.user,
-          isLoggedIn: state.isLoggedIn
+          isLoggedIn: state.isLoggedIn,
+          userData: state.userData,
+          token:state.token
         })
     )
 }
@@ -58,14 +65,25 @@ const userSlice = createSlice({
             builder.addCase(LoginUser.fulfilled, (state, action) => {
                 state.isLoggedIn = true
             state.userData = action.payload.data.user
+            state.token = action.payload.data.token
             localStorage.setItem(
-              "loginUserData",
+              "loginData",
               JSON.stringify({
-                user: state.user,
-                isLoggedIn: state.isLoggedIn
+                isLoggedIn: state.isLoggedIn,
+                userData: state.userData,
+                token: state.token
               })
             )
           })
+          .addMatcher(
+            (action) => action.type.endsWith("/pending"),
+            (state) => {
+              state.error = null
+              state.isLoading = true
+            }
+          )   
+    
+
           .addMatcher(
             (action) => action.type.endsWith("/rejected"),
             (state) => {

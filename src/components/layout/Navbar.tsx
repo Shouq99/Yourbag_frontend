@@ -3,6 +3,7 @@ import { AppDispatch, RootState } from "@/tookit/store";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {Link} from "react-router-dom"
+import { CartIcon } from "../CartIcon";
 
  const Navbar = () => {
     const dispatch: AppDispatch = useDispatch()
@@ -38,7 +39,9 @@ import {Link} from "react-router-dom"
 
          )}
             <li>
-                <Link className="nav_link" to= "/">Home</Link>
+                <Link className="nav_link" to= "/cart">
+                    <CartIcon value="0"/>
+                </Link>
             </li> 
 
      

@@ -12,7 +12,7 @@ export type Product = {
   productId: string;
   name: string
   slug: string
-  image: string
+  image?: string
   description: string
   price: number
   createdAt: Date
@@ -31,8 +31,8 @@ export type Product = {
 }
 
 export type FilterType = {
-  currentPage: number
-  itemsPerPage: number
+  page: number
+  limit: number
   keyword: string | undefined
   orderBy: number
   sortBy: number
@@ -43,13 +43,17 @@ export type FilterType = {
 
 
 export type UserState ={
-  users: User[]
-  user: User | null
-  isLoading: boolean
   error: string | null
+  isLoading: boolean
+  userData: User | null
+  token: string | null
   isLoggedIn: boolean
-  userData?: null 
-  token: null
+   users: User[]
+  // isLoading: boolean
+  // error: string | null
+  // isLoggedIn: boolean
+  // userData?: null 
+  // token: null
 }
 
 
@@ -82,3 +86,8 @@ export type User = {
     password: string
   }
 
+  // export type LoginData = {
+  //   userData: User | null
+  //   token: string | null
+  //   isLoggedIn: boolean
+  // }

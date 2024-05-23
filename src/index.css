@@ -80,8 +80,24 @@ align-items: center;
   background-color: rgb(246 246 246);
 }
 
+.product-left{
+  align-items: end;
+}
+
 .products{
   background-color: blue;
+}
+.cart-icon{
+  height: 100%;
+  font-size: 2rem;
+  position: relative;
+  color: white;
+}
+.badge{
+  background-color: #3A6073;
+  position: absolute;
+  top: -18px;
+  right: -15px;
 }
 
 .grid {

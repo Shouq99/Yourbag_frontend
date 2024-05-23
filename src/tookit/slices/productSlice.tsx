@@ -1,5 +1,5 @@
 import api from "@/api"
-import {ProductState} from "@/types"
+import {FilterType, ProductState} from "@/types"
 
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit"
 
@@ -12,21 +12,41 @@ const initialState: ProductState = {
     isLoading: false
 }
 
-export const fetchProducts = createAsyncThunk("products/fetchProducts",
- async ({page, limit, keyword, sortBy}:{
-  page: number,
-  limit: number,
-  keyword: string,
-  sortBy: string  }) => {
-    const response = 
-    keyword .length > 0 
-    ? await api.get(`/products?page=${page}&limit=${limit}&searchTerm=${keyword}`
-    )
-    : await api.get(
-    `/products?page=${page}&limit=${limit}&sortBy=${sortBy}`)
+export const fetchProducts = createAsyncThunk(
+  "products/fetchProducts",
+  async ({
+    page,
+    limit,
+    keyword,
+    orderBy,
+    sortBy,
+    minPrice,
+    maxPrice
+  }: FilterType) => {
+    let url = `/products?page=${page}&limit=${limit}&sortBy=${sortBy}&orderBy=${orderBy}&minPrice=${minPrice}&maxPrice=${maxPrice}`
+    if (keyword) {
+      url += `&keyword=${keyword}`
+    }
+    const response = await api.get(url)
     return response.data
+  }
+)
 
-})
+// export const fetchProducts = createAsyncThunk("products/fetchProducts",
+//  async ({page, limit, keyword, sortBy}:{
+//   page: number,
+//   limit: number,
+//   keyword: string,
+//   sortBy: string  }) => {
+//     const response = 
+//     keyword .length > 0 
+//     ? await api.get(`/products?page=${page}&limit=${limit}&keyword=${keyword}`
+//     )
+//     : await api.get(
+//     `/products?page=${page}&limit=${limit}&sortBy=${sortBy}`)
+//     return response.data
+
+// })
 
 
 
