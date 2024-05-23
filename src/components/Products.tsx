@@ -69,12 +69,12 @@ import { Product } from "@/types";
     <section>
       <h2>Product</h2>
 
-      <div className="product-search product-filter">
+      <div className="product-search">
         <form>
           <span>
-            <h2>
+            <h3>
               Search
-            </h2>
+            </h3>
             <input
               type="text"
               id="search"

@@ -60,6 +60,7 @@ export type UserState ={
 export type LoginFormData= {
   email:  string
   password: string
+  
 }
 
 export type User = {
