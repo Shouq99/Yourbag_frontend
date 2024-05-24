@@ -22,8 +22,10 @@ type LoginFormData = {
     const onSubmit: SubmitHandler<LoginFormData> = async (data) => {
       try{
         const response = await dispatch(LoginUser(data))
+        const role = response.payload.data.userSignIn.role;
     //    console.log("Response from Register: " + response)
-        toast.success(response.payload.message)
+        navigate(role ? "/dashboard/admin" : "/dashboard/user")
+    //    toast.success(response.payload.message)
       }catch (error: any){
         toast.error(error.message || "Registeration failed")
 
@@ -33,7 +35,7 @@ type LoginFormData = {
         return (
           <div className="LogIn">
           <h2>User LogIn</h2>
-          <img src="src/img/logo-removebg-preview.png"/>
+          <img src="src/img/logo-removebg-preview.png" className="product-img"/>
           <form onSubmit={handleSubmit (onSubmit)}>
        
           <div className="form-field">
