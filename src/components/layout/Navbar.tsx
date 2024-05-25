@@ -4,10 +4,12 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {Link} from "react-router-dom"
 import { CartIcon } from "../CartIcon";
+import { useUserState } from "../hooks/useUserState";
 
  const Navbar = () => {
     const dispatch: AppDispatch = useDispatch()
-    const {isLoggedIn} = useSelector((state: RootState) => state.userR)
+    // const {isLoggedIn} = useSelector((state: RootState) => state.userR)
+   const {isLoggedIn, userData}= useUserState();
     const handleLogout = () =>{
          dispatch(logoutUser())
      }
@@ -19,6 +21,12 @@ import { CartIcon } from "../CartIcon";
             <>
                         <li>
                 <Link className="nav_link" to= "/" onClick={handleLogout}>Logout</Link>
+            </li>    
+                     <li>
+                <Link className="nav_link" to= {`/dashboard/${userData && userData.role ? "admin" : "user"} `} >
+                {userData && userData.role ? "admin" : "user"} Dashboard
+                
+                </Link>
             </li>
 
             </>

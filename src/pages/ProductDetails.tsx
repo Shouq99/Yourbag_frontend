@@ -4,11 +4,14 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import img from "./../img/img1.jpg";
+import { useProductsState } from "@/components/hooks/useProductsState";
 export const ProductDetails = () => {
     const {slug} = useParams<{slug: string}>()
-    const { product, isLoading, error, totalPages} = useSelector((
-      state: RootState) => state.productR)
+    // const { product, isLoading, error, totalPages} = useSelector((
+    //   state: RootState) => state.productR)
   
+    const {product, isLoading, error } = useProductsState();
+
     const dispatch: AppDispatch = useDispatch()
     
     

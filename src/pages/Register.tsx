@@ -1,19 +1,11 @@
 import { registerUser } from "@/tookit/slices/userSlice";
 import { AppDispatch } from "@/tookit/store";
+import { RegisterFormData } from "@/types";
 import { SubmitHandler, useForm } from "react-hook-form"
 import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-type FormData = {
-  fullName: string
-  phone: number
-  email: string
-  password: string
-  createdAt: Date
-  role: number
-  isBanned: boolean
-}
 
     export const Register = () => {
       const navigate = useNavigate()
@@ -22,10 +14,10 @@ type FormData = {
           register,
           handleSubmit,
           formState: { errors },
-        } = useForm<FormData>()
+        } = useForm<RegisterFormData>()
       
       //  console.log(data)
-    const onSubmit: SubmitHandler<FormData> = async (data) => {
+    const onSubmit: SubmitHandler<RegisterFormData> = async (data) => {
       try{
         const response = await dispatch(registerUser(data))
     //    console.log("Response from Register: " + response)

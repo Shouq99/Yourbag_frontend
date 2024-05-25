@@ -2,11 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import productReducer from "./slices/productSlice"
 import userReducer from "./slices/userSlice"
+import categoryReducer from "./slices/userSlice"
+import {  } from "@/pages";
 
 export const store = configureStore({
     reducer: {
         productR: productReducer,
-        userR: userReducer
+        userR: userReducer,
+        categoryR: categoryReducer
     }})
 
     export type RootState = ReturnType<typeof store.getState>;

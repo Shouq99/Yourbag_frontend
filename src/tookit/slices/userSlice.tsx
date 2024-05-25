@@ -1,5 +1,5 @@
 import api from "@/api"
-import { LoginFormData,Product, ProductState, User, UserState } from "@/types"
+import { LoginFormData,Product, ProductState, UpdateProfileFormData, User, UserState } from "@/types"
 import {  createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 const data =
@@ -37,6 +37,11 @@ export const LoginUser = createAsyncThunk("users/registerUser", async (userData:
     const response = await api.post("/users/signIn", userData)
     // const token = response.data.data.token
     // localStorage.setItem("token", token)
+    return response.data
+})
+export const updateUser = createAsyncThunk("users/updateUser",
+ async ({updateUserData , userId}: {updateUserData: UpdateProfileFormData , userId: string | undefined}) => {
+    const response = await api.put(`/users/${userId}`, updateUserData)
     return response.data
 })
 

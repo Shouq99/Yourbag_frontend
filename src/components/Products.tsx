@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "@/tookit/store";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "@/tookit/store";
 import { fetchProducts } from "@/tookit/slices/productSlice";
 import { Link } from "react-router-dom";
 import Index from "@/routes";
 import { styleText } from "util";
 import { Product } from "@/types";
+import { useProductsState } from "./hooks/useProductsState";
 
 
  const Products = () => {
 
-  const { products, isLoading, error, totalPages} = useSelector(
-    (state: RootState) => state.productR)
+  // const { products, isLoading, error, totalPages} = useSelector(
+  //   (state: RootState) => state.productR)
+
+  const {products, isLoading, error, totalPages } = useProductsState();
 
     const dispatch: AppDispatch = useDispatch()
     
@@ -29,7 +32,7 @@ import { Product } from "@/types";
         await dispatch(fetchProducts({page, limit, keyword,orderBy, sortBy, minPrice, maxPrice }))
       }
       fetchDate()
-  }, [page, limit, keyword, sortBy])
+  }, [page, limit, keyword, sortBy , minPrice, maxPrice])
 
   const handlePreviousPage = () => {
     setPage((currentPage: number) => currentPage - 1)
@@ -51,6 +54,8 @@ import { Product } from "@/types";
     }
   }
 
+console.log(minPrice)
+console.log(maxPrice)
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortBy(Number(e.target.value))
   }
@@ -98,6 +103,7 @@ import { Product } from "@/types";
             </select>
           </span>
           <span className="price-range">
+            <h2>Filter by Price</h2>
             <label htmlFor="range">Price</label>
             <input
               type="text"

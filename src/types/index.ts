@@ -30,6 +30,15 @@ export type Product = {
     isLoading: boolean
 }
 
+export type CategoryState = {
+  categories:Category[],
+  category :Category | null,
+  totalPages: number,
+  error: null | string,
+  isLoading: boolean
+}
+
+
 export type FilterType = {
   page: number
   limit: number
@@ -87,8 +96,25 @@ export type User = {
     password: string
   }
 
-  // export type LoginData = {
-  //   userData: User | null
-  //   token: string | null
-  //   isLoggedIn: boolean
-  // }
+   export type LoginData = {
+     userData: User | null
+     token: string | null
+     isLoggedIn: boolean
+   }
+
+   export type RegisterFormData = {
+    fullName: string
+    phone: number
+    email: string
+    password: string
+    createdAt: Date
+    role: number
+    isBanned: boolean
+  }
+  
+  export type UpdateProfileFormData = {
+    fullName: string
+    phone: number
+   
+  }
+  

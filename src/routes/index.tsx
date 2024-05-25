@@ -1,13 +1,13 @@
 import { BrowserRouter,Routes, Route } from "react-router-dom";
 
-import { UserDashboard,AdminDashboard, Contact, Error, Home, Login, Cart, UserProfile, UserOrders, Product, Orders } from "@/pages";
+import { UserDashboard,AdminDashboard, Contact, Error, Home, Login, Cart, UserProfile, UserOrders, Product, Orders, Categories } from "@/pages";
 import React from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import { ProductDetails } from "@/pages/ProductDetails";
 import { Register } from "@/pages/Register";
 import { Users } from "lucide-react";
-import { Categories } from "@/pages/Admin/Categories";
+//import { Categories } from "@/pages/Admin/Categories";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { AdminRoute } from "./AdminRoute";
 
@@ -36,10 +36,10 @@ export const Index = () => {
         <Route path="/dashboard" element={<AdminRoute/>} >
 
             <Route path="admin" element={<AdminDashboard/>} />
-            <Route path="admin/categories" element={<Categories/>} />
-            <Route path="admin/product" element={<Product/>} />
-            <Route path="admin/users" element={<Users/>} />
-            <Route path="admin/orders" element={<Orders/>} />
+            <Route path="../components/Categories" element={<Categories/>} />
+            <Route path="../components/Product" element={<Product/>} />
+            <Route path="../components/Users" element={<Users/>} />
+            <Route path="../components/Orders" element={<Orders/>} />
     </Route>
         <Route path="/*" element={<Error/>} />
         </Routes>
