@@ -38,6 +38,11 @@ export type CategoryState = {
   isLoading: boolean
 }
 
+export type CartState = {
+  cartItem:Product[]
+  
+}
+
 
 export type FilterType = {
   page: number

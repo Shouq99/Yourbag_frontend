@@ -5,11 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 import {Link} from "react-router-dom"
 import { CartIcon } from "../CartIcon";
 import { useUserState } from "../hooks/useUserState";
+import { useCartState } from "../hooks/userCartState";
 
  const Navbar = () => {
     const dispatch: AppDispatch = useDispatch()
     // const {isLoggedIn} = useSelector((state: RootState) => state.userR)
    const {isLoggedIn, userData}= useUserState();
+   const {cartItem}= useCartState();
     const handleLogout = () =>{
          dispatch(logoutUser())
      }
@@ -48,7 +50,9 @@ import { useUserState } from "../hooks/useUserState";
          )}
             <li>
                 <Link className="nav_link" to= "/cart">
-                    <CartIcon value="0"/>
+                    <CartIcon value={cartItem && cartItem.length > 0 ? cartItem.length : 0 }
+                    
+                    />
                 </Link>
             </li> 
 

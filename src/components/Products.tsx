@@ -7,6 +7,7 @@ import Index from "@/routes";
 import { styleText } from "util";
 import { Product } from "@/types";
 import { useProductsState } from "./hooks/useProductsState";
+import { addToCart } from "@/tookit/slices/cartSlice";
 
 
  const Products = () => {
@@ -17,7 +18,9 @@ import { useProductsState } from "./hooks/useProductsState";
   const {products, isLoading, error, totalPages } = useProductsState();
 
     const dispatch: AppDispatch = useDispatch()
-    
+
+   
+
     const [page, setPage] = useState(1);
     const [limit, setlimit] = useState(3);
     // const [keyword, setkeyword] = useState("")
@@ -54,8 +57,7 @@ import { useProductsState } from "./hooks/useProductsState";
     }
   }
 
-console.log(minPrice)
-console.log(maxPrice)
+
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortBy(Number(e.target.value))
   }
@@ -64,7 +66,7 @@ console.log(maxPrice)
   }
 
   const handleAddToCart = (product: Product)=>{
-    alert(JSON.stringify(product))
+    dispatch(addToCart(product))
   }
   
 
@@ -158,13 +160,13 @@ console.log(maxPrice)
                 </button>
                 
             
+                </Link>
 
                   <button className="product-btn" onClick={()=>{
                     handleAddToCart(product)
                   }}>
                   Add to cart 
                 </button>
-                </Link>
             </div>
             
           ))}
