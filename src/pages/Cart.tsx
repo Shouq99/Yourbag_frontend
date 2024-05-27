@@ -27,7 +27,12 @@ if (productId){
         currency: "USD" 
             } )}
     
+    const cartTotal = ()=> {
+    let total = 0
+    cartItem && cartItem.map((cartItem) => (total += cartItem.price))
+    return formatPrice(total)
 
+    }
     return (
         <div className="cart">
         {cartItem && cartItem.length > 0 ? (
@@ -73,6 +78,10 @@ if (productId){
                     ))}
 
                   
+                </div>
+                <div >
+                    <h2> Cart Summary</h2>
+                    <h3>Total You have to pay : {cartTotal()}</h3>
                 </div>
                 
             </div>
