@@ -3,13 +3,17 @@
 import React from "react";
 
 const Header = () => {
+  
     return(
+      
+      
         <header  className="hero-section">
           <div className="fade"></div>
         <div className="container">
-          <h1>Bienvenue sur notre site web</h1>
-          <p>Découvrez nos services et apprenez-en plus sur nous.</p>
+          <h1>Your bag </h1>
+          <p>They are bags designed with various modern designs.</p>
           {/* <a href="#services" className="btn">Nos Services</a> */}
+          
         </div>
 
 
