@@ -16,6 +16,7 @@ const initialState: UserState = {
   userData: data.userData,
   token: data.token,
   isLoggedIn: data.isLoggedIn
+  
   //   users: [],
   //  // user: null,
   //   userData:data.userData,
@@ -81,6 +82,20 @@ const userSlice = createSlice({
               })
             )
           })
+          // builder.addCase(updateUser.fulfilled, (state, action) => {
+          //   console.log(action.payload.data)
+          //   if(state.userData){
+          //     state.userData.fullName = action.payload.fullName
+          //     state.userData.phone = action.payload.phone
+          //     localStorage.setItem(
+          //          "loginData",
+          //          JSON.stringify({
+          //            isLoggedIn: state.isLoggedIn,
+          //            userData: state.userData,
+          //            token: state.token
+          //          })
+          //        )
+          //   }
           .addMatcher(
             (action) => action.type.endsWith("/pending"),
             (state) => {

@@ -12,7 +12,7 @@ export const Home = () => {
             <ProductSidebars/>
             </div>
             <div className="main-container">
-            <h1> List of all products </h1>
+            {/* <h1> List of all products </h1> */}
             <Products/>
             </div>
         </div>

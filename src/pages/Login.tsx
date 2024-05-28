@@ -34,12 +34,13 @@ type LoginFormData = {
       
         return (
           <div className="LogIn">
-          <h2>User LogIn</h2>
-          <img src="src/img/logo-removebg-preview.png" className="product-img"/>
+          <img src="src/img/logo_B.png" className="logo-img"/>
+          <h1>LogIn</h1>
+
           <form onSubmit={handleSubmit (onSubmit)}>
        
           <div className="form-field">
-        <label htmlFor="name"> email: </label>
+        <label htmlFor="email"> email: </label>
 
           <input
         type="email"
@@ -74,7 +75,7 @@ type LoginFormData = {
 
        
     
-     <button type="submit">Login</button>
+     <button type="submit" className="product-btn">Login</button>
         </form>
         </div>
     )

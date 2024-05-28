@@ -30,7 +30,8 @@ import 'react-toastify/dist/ReactToastify.css';
       
         return (
           <div className="register">
-          <h2>User Registration</h2>
+          <img src="src/img/logo_B.png" className="logo-img"/>
+          <h1>Regiter</h1>
           <form onSubmit={handleSubmit (onSubmit)}>
         <div className="form-field">
         <label htmlFor="name"> Name: </label>
@@ -90,7 +91,7 @@ import 'react-toastify/dist/ReactToastify.css';
        })}/>
         {errors.phone && <p>{errors.phone?.message}</p>}
         </div>
-     <button type="submit">Register</button>
+     <button type="submit" className="product-btn">Register</button>
         </form>
         </div>
     )

@@ -8,8 +8,6 @@ export {AdminDashboard } from "./Admin/AdminDashboard"
 export {Cart } from "./Cart"
 export {UserProfile} from "./UserProfile"
 export {UserOrders} from "./UserOrders"
-export {Categories } from "../components/Categories"
-export {Product } from "../components/AdminProducts"
 export {Users } from "../components/Users"
 export {Orders } from "../components/Orders"
 

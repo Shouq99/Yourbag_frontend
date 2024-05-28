@@ -38,6 +38,8 @@ export type CategoryState = {
   isLoading: boolean
 }
 
+
+
 export type CartState = {
   cartItem:Product[]
   
@@ -115,11 +117,26 @@ export type User = {
     createdAt: Date
     role: number
     isBanned: boolean
+  } 
+    export type CreateProductFormData = {
+      name: string
+      slug: string
+      image?: string
+      description: string
+      price: number
+      createdAt: Date
+      categoryId: string
+      category: Category
   }
   
   export type UpdateProfileFormData = {
     fullName: string
     phone: number
+   
+  }
+    export type CreateCategoryFormData = {
+    fullName: string
+    description: string
    
   }
   

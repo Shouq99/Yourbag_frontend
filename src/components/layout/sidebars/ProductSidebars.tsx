@@ -1,9 +1,13 @@
 import React from "react";
+import Header from "../Header";
 
 const ProductSidebars = () => {
     return(
+        
         <div className="sidebar">
-        <div>
+        <Header/>
+
+        {/* <div>
             <h3>
                 Filter by Category goes here
             </h3>
@@ -13,8 +17,8 @@ const ProductSidebars = () => {
                 Filter by  goes here
             </h3>
         </div>
-
-        </div>
+*/}
+        </div> 
       
     )
 }

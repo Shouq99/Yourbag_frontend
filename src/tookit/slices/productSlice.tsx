@@ -1,5 +1,6 @@
 import api from "@/api"
-import {FilterType, ProductState} from "@/types"
+import {CreateProductFormData, FilterType, ProductState} from "@/types"
+import { getToken } from "@/utils/localStorage"
 
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit"
 
@@ -58,6 +59,32 @@ export const fetchProductsBySlug = createAsyncThunk(
   }
 )
 
+export const deleteProduct = createAsyncThunk(
+  "products/deleteProduct",
+  async (productId: string ) => {
+  await api.delete(`/products/${productId}`,{
+    headers:{
+      Authorization: `Bearer ${getToken()}`
+    }
+   } )
+    return productId
+  }
+)
+
+export const createProduct = createAsyncThunk(
+  "products/createProduct",
+  async (newProduct: CreateProductFormData ) => {
+ const response = await api.post(`/products/${newProduct}`,{
+    headers:{
+      Authorization: `Bearer ${getToken()}`
+    }
+   } )
+   console.log(response)
+    return response.data
+  }
+)
+
+
 const productSlice = createSlice({
     name: "products",
     initialState: initialState,
@@ -90,6 +117,26 @@ const productSlice = createSlice({
             //         state.isLoading = false
                 
             //     })
+
+            .addCase(deleteProduct.fulfilled, (state, action) => {
+              //   console.log(action.payload)
+
+           state.products = state.products.filter(
+             (products) => products.productId !== action.payload)
+        }) 
+        
+        .addCase(createProduct.fulfilled, (state, action) => {
+              //   console.log(action.payload)
+              state.products.push(action.payload.data)
+              console.log(action.payload.data)
+           //   state.isloading = false
+    
+
+          // state.products = state.products.filter(
+           //  (products) => products.productId !== action.payload)
+        })
+
+
             
         .addMatcher(
         (action) => action.type.endsWith("/pending"),

@@ -17,7 +17,10 @@ import { useCartState } from "../hooks/userCartState";
      }
     return (
 
-        <nav className="flex-center">
+        <nav>
+          
+
+        <div className="flex-center">
         <ul className="nav-lists flex-center">
          {isLoggedIn && (
             <>
@@ -58,7 +61,14 @@ import { useCartState } from "../hooks/userCartState";
 
      
             </ul>
+ </div>
             </nav>
+            
+  
+
+
+
+
     )
 }
 export default Navbar
