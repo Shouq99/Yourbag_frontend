@@ -12,9 +12,9 @@ export const UserSidebar = () => {
         <div>
             <div>
 <h2>User Profile</h2>
-        <p>{userData?.fullName}</p>
+        <h1>{userData?.fullName}</h1>
         
-        <p>{userData?.email}</p> 
+        <h1>{userData?.email}</h1> 
         </div>
         <ul>
         <li>
