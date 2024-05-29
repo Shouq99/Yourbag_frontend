@@ -30,7 +30,7 @@ import 'react-toastify/dist/ReactToastify.css';
       
         return (
           <div className="register">
-          <img src="src/img/logo_B.png" className="logo-img"/>
+          <img src="https://i.im.ge/2024/05/29/KIuTg6.logo-B.png" className="logo-img"/>
           <h1>Regiter</h1>
           <form onSubmit={handleSubmit (onSubmit)}>
         <div className="form-field">
