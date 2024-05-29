@@ -197,7 +197,7 @@ export const AdminProduct = () => {
         {products?.length &&
           products.map((product) => (
             <div className="product-card" key={product.productId}>
-                 <img src={"/" + product.image} alt={product.name} className="product-img"/>
+                 <img src={product.image} alt={product.name} className="product-img"/>
          <h3 className="Product_Name">{product.name}</h3>
          {/* <p>{product.category.map((category) => category.name)}</p> */}
          <p className="Product_Name">{product.description}</p>

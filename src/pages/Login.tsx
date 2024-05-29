@@ -34,7 +34,7 @@ type LoginFormData = {
       
         return (
           <div className="LogIn">
-          <img src="src/img/https://i.im.ge/2024/05/29/KIuTg6.logo-B.png" className="logo-img"/>
+          {/* <img src="src/img/https://i.im.ge/2024/05/29/KIuTg6.logo-B.png" className="logo-img"/> */}
           <h1>LogIn</h1>
 
           <form onSubmit={handleSubmit (onSubmit)}>
