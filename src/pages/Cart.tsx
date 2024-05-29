@@ -38,10 +38,12 @@ if (productId){
         {cartItem && cartItem.length > 0 ? (
             <> 
             <div className="">
+                <br>
                 <h2> Shopping Cart [{cartItem.length}] items</h2>
+                </br>              
                 <button className="btn" onClick={handleRemoveAllProductsFromCart}> Remove all items from cart <i className="fas fa-trash-alt"></i>
                 </button>
-
+                
                 <button className="btn" 
                 onClick={() => {
                     navigate("/")
@@ -54,7 +56,7 @@ if (productId){
                 <div className="cartItem">
                     {cartItem.map((cartItem)=>(
                         <div className="cartItem" key={cartItem.productId}>
-                                    <div className="product-card" key={cartItem.productId}>
+                                    <div className="cart-card" key={cartItem.productId}>
                  <img src={cartItem.image} alt={cartItem.name} className="product-img"/>
               <h3 className="Product_Name">{cartItem.name}</h3>
               <p className="Product_Name">{cartItem.description}</p>
