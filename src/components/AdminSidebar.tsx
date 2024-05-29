@@ -11,7 +11,7 @@ export const AdminSidebar = () => {
         <aside className="sidebar">
         <div>
             <div>
-<h2> Admin Profile</h2>
+<h1> Admin Profile</h1>
         <p>{userData?.fullName}</p>
         
         <p>{userData?.email}</p> 

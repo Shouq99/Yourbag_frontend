@@ -9,12 +9,12 @@ export const UserSidebar = () => {
 
     return (
         <aside className="sidebar">
-        <div>
+        <div className="Dash-card">
             <div>
-<h2>User Profile</h2>
-        <h1>{userData?.fullName}</h1>
+<h1>User Profile</h1>
+        <h2>{userData?.fullName}</h2>
         
-        <h1>{userData?.email}</h1> 
+        <h2>{userData?.email}</h2> 
         </div>
         <ul>
         <li>

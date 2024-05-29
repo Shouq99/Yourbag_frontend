@@ -34,7 +34,7 @@ export const UserProfile = () => {
     return (
         <div>
         <UserSidebar/>
-        <div className="main-contect">
+        <div className="cart-card">
        {userData && (
         <>
         <h3> Name: {userData.fullName}</h3>
