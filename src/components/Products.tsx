@@ -73,14 +73,14 @@ import { addToCart } from "@/tookit/slices/cartSlice";
   //console.log(products)
   return (
     <section>
-      <h1>All Handbags</h1>
-
+    
+      
       <div className="product-search">
         <form>
           <span>
-            <h3>
+            <h2>
               Search
-            </h3>
+            </h2>
             <input
               type="text"
               id="search"
@@ -138,6 +138,8 @@ import { addToCart } from "@/tookit/slices/cartSlice";
             <option value="Price">Price</option>
               </select>
       </div> */}
+            <p className="text">All Handbags</p>
+
       <div className="grid flex-center">
         {products?.length &&
           products.map((product) => (
@@ -187,9 +189,7 @@ import { addToCart } from "@/tookit/slices/cartSlice";
                   Next
                 </button> 
               </article>
-              <br>
-
-              </br>
+            
       </div>
     </section>
   )

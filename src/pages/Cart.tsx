@@ -38,9 +38,7 @@ if (productId){
         {cartItem && cartItem.length > 0 ? (
             <> 
             <div className="">
-                <br>
                 <h2> Shopping Cart [{cartItem.length}] items</h2>
-                </br>              
                 <button className="btn" onClick={handleRemoveAllProductsFromCart}> Remove all items from cart <i className="fas fa-trash-alt"></i>
                 </button>
                 
