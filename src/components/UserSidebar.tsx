@@ -8,7 +8,7 @@ export const UserSidebar = () => {
     const {userData} = useSelector((state: RootState) => state.userR)
 
     return (
-        <aside className="sidebar">
+        <aside className="sidebar flex-center">
         <div className="Dash-card">
             <div>
 <h1>User Profile</h1>

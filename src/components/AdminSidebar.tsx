@@ -8,8 +8,8 @@ export const AdminSidebar = () => {
     const {userData} = useSelector((state: RootState) => state.userR)
 
     return (
-        <aside className="sidebar">
-        <div>
+        <aside className="sidebar flex-center">
+        <div className="Dash-card">
             <div>
 <h1> Admin Profile</h1>
         <p>{userData?.fullName}</p>
