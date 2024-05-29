@@ -37,8 +37,8 @@ export const ProductDetails = () => {
             <div className="product-details">
             <div className="product-letf">
 
-                 {/* <img src={product.image} alt={product.name} className="product-img"/> */}
-                 <img src={"/" + product.image} alt={product.name} className="product-img"/>
+                  <img src={product.image} alt={product.name} className="product-img"/> 
+                 {/* <img src={"/" + product.image} alt={product.name} className="product-img"/> */}
                      </div>
 
                      <div className="product-body">

@@ -24,7 +24,7 @@ if (productId){
     const formatPrice = (amount: number)=>{
      return amount.toLocaleString("en-us",{
         style: "currency",
-        currency: "USD" 
+        currency: "SAR" 
             } )}
     
     const cartTotal = ()=> {
@@ -39,7 +39,7 @@ if (productId){
             <> 
             <div className="">
                 <h2> Shopping Cart [{cartItem.length}] items</h2>
-                <button onClick={handleRemoveAllProductsFromCart}> Remove all items from cart <i className="fas fa-trash-alt"></i>
+                <button className="btn" onClick={handleRemoveAllProductsFromCart}> Remove all items from cart <i className="fas fa-trash-alt"></i>
                 </button>
 
                 <button className="btn" 
