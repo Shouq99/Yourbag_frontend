@@ -91,7 +91,7 @@ import { addToCart } from "@/tookit/slices/cartSlice";
               placeholder="search...."
             />
           </span>
-          <span>
+          {/* <span>
             <label htmlFor="orderBy">OrderBy</label>
             <select value={orderBy} onChange={handleOrderChange} id="orderBy">
               <option value={0}>ASC</option>
@@ -102,7 +102,7 @@ import { addToCart } from "@/tookit/slices/cartSlice";
               <option value={1}>Date</option>
               <option value={0}>Name</option>
             </select>
-          </span>
+          </span> */}
           
           <span className="price-range">
             <h2>Filter by Price</h2>
