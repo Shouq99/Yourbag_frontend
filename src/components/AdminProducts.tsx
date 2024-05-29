@@ -24,7 +24,7 @@ export const AdminProduct = () => {
     } = useForm<CreateProductFormData>()
 
     const [page, setPage] = useState(1);
-    const [limit, setlimit] = useState(5);
+    const [limit, setlimit] = useState(8);
     // const [keyword, setkeyword] = useState("")
     // const [sortBy, setsortBy] = useState("name")
 
